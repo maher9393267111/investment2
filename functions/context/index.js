@@ -317,13 +317,13 @@ export const StateContextProvider = ({ children }) => {
       );
 
       console.log("user===>", userCredential.user.emailVerified);
-      // if (userCredential.user.emailVerified === false) {
+      if (userCredential.user.emailVerified === false) {
 
-      //   setPageLoading(false);
-      //   toast.error("please verify your email")
+        setPageLoading(false);
+        toast.error("please verify your email")
 
-      //   return
-      // }
+        return
+      }
 
       setPageLoading(false);
       toast.success("successfully signed in");
