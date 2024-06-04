@@ -144,7 +144,7 @@ const ProductForm = ({
 
           <div className=" grid gap-3 md:grid-cols-3 lg:grid-cols-4 grid-cols-1">
             {/* -----category--- */}
-            <Form.Item      rules={[
+            {/* <Form.Item      rules={[
               {
                 required: true,
                 message: "Please input category",
@@ -159,7 +159,7 @@ const ProductForm = ({
                   );
                 })}
               </Select>
-            </Form.Item>
+            </Form.Item> */}
 
             {/* -----subcategory--- */}
 

@@ -9,12 +9,15 @@ import {
   where,
   deleteDoc,
   updateDoc,
+  addDoc,
   limit,
   orderBy,
   onSnapshot,
+  serverTimestamp
 } from "firebase/firestore";
 import { db, storage } from "./index";
 import { message } from "antd";
+
 
 import {
   // to speceify the folder to save and retrive image from it
@@ -269,4 +272,17 @@ export const updateUserRole = async (userId, updatedRole) => {
       "Invalid updatedRole parameter. Please provide 'guest', 'user', or 'admin'."
     );
   }
+};
+
+
+
+
+export const handleNotifications = async (uid,title, details, toastDesc) => {
+  await addDoc(collection(db, `users/${uid}/notifications`), {
+    title,
+    details,
+    timestamp: serverTimestamp(),
+    read: "false",
+  });
+message.success("Notification created successfully")
 };

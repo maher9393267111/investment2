@@ -1,6 +1,6 @@
 
 import React from "react";
-import CategoryForm from "./categoryForm";
+import CategoryForm from "./orderForm";
 import { toast } from "react-toastify";
 import { useAuth } from "@/functions/context";
 import { useState } from "react";
@@ -30,10 +30,7 @@ const UpdateCategoryMain = ({ category }) => {
     },
     onSuccess: () => {
       // Invalidate the product-page query to trigger a refetch
-      queryClient.invalidateQueries(["users"]);
-    },
-    onSettled: () => {
-      queryclient.invalidateQueries('users');
+      queryClient.invalidateQueries(["orders-page"]);
     },
   });
 

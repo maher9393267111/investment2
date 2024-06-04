@@ -38,7 +38,7 @@ const EditSubPage = ({}) => {
 
     
       if (id) getProduct();
-      getData();
+      getProduct();
     }, [id]);
   
     if (pageLoading) {

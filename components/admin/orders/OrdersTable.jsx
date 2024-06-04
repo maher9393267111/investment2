@@ -22,12 +22,12 @@ const CategoryTable = ({ cats }) => {
   const [page, setPage] = useState(null);
   const [lastDoc, setLastDoc] = useState(1);
   const { isPending, isSuccess, isFetching, isError, error, data } = useQuery({
-    queryKey: [`users`],
+    queryKey: [`orders-page`],
     queryFn: () => getDocumentsOrder(
-            "users",
-            orderBy("displayName", "asc"), null 
+            "orders",
+            orderBy("timestamp", "asc"), null 
            ),
-    // staleTime: 80000000,
+   // staleTime: 80000000,
     // placeholderData: keepPreviousData,
     // refetchOnWindowFocus: true,
   });

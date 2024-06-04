@@ -34,17 +34,14 @@ const Nav = ({show}) => {
        
       
         // { id: 1, text: "Add Machine", path: "/admin/makine/add" },
-        { id: 2, text: "All investors", path: "/admin/category/all" },
-        { id: 3, text: "Add Product", path: "/admin/product/add" },
-        { id: 4, text: "All Products", path: "/admin/product/all" },
-        // { id: 5, text: "Add SubCategory", path: "/admin/subcategory/add" },
-        // { id: 6, text: "All SubCategories", path: "/admin/subcategory/all" },
-        // { id: 7, text: "Add Article", path: "/admin/article/add" },
-        // { id: 8, text: "All Articles", path: "/admin/article/all" },
-        { id: 9, text: "AboutSection", path: "/admin/aboutSection" },
-        { id: 10, text: "HomeSection", path: "/admin/homeSetion" },
-        // { id: 11, text: "Add Gallery", path: "/admin/gallery/add" },
-        // { id: 12, text: "All Galleries", path: "/admin/gallery/all" },
+        { id: 2, text: "All investors", path: "/admin/investors/all" },
+        { id: 3, text: "All orders", path: "/admin/orders/all" },
+        { id: 4, text: "Add Product", path: "/admin/product/add" },
+        { id:5 , text: "All Products", path: "/admin/product/all" },
+     
+        { id: 6, text: "AboutSection", path: "/admin/aboutSection" },
+        { id: 7, text: "HomeSection", path: "/admin/homeSetion" },
+   
     
       ];
 

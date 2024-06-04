@@ -21,6 +21,9 @@ import {
   getDoc,
   setDoc,
   updateDoc,
+  query,
+  orderBy,
+  onSnapshot
 } from "firebase/firestore";
 
 import { useDispatch } from "react-redux";
@@ -40,6 +43,34 @@ export const StateContextProvider = ({ children }) => {
   const [wishList, setWishList] = useState([]);
   const [cart, setCart] = useState([]);
 
+  const [notifs, setNotifs] = useState(null);
+  const [notifCount, setNotifCount] = useState(null);
+
+
+  const NotificationsSnapShot = async (userId) => {
+    const ref = collection(db, `users/${userId}/notifications`);
+    const q = query(ref, orderBy("timestamp", "desc"));
+
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      const notifs = [];
+
+      querySnapshot.forEach((doc) => {
+        notifs.push({ id: doc.id, ...doc.data() });
+      });
+      setNotifs(notifs);
+      setNotifCount(notifs.filter((el) => el.read === "false").length);
+      console.log("NOTIFI-->" , notifs ,`users/${userId}}/notifications`)
+    });
+
+
+
+
+  };
+
+
+
+
+
   const wishListSnapShot = async (userId) => {
     const docRef = doc(db, "wishlist", userId); //access the db folder name wishlist with userId
     // fetch data from document
@@ -50,6 +81,8 @@ export const StateContextProvider = ({ children }) => {
       setWishList(docSnap.data().wishList);
     }
   };
+
+
 
   const cartSnapShot = async (userId) => {
     const docRef = doc(db, "cart", userId); //
@@ -223,90 +256,7 @@ export const StateContextProvider = ({ children }) => {
 
 
 
-  // remove addtocart when clicked on single product
-  // const removeFromCartList2 = async (item) => {
-    // {product}
-
-    // try {
-    //   if (profile) {
-        // specefic user addtocart get
-        //   const updateCartList = doc(db, "cart", profile?.uid);
-
-        //   /// update current user cart and add new product to array
-
-        //   await updateDoc(updateCartList, {
-        //     cart: arrayRemove({
-        //       ...item,
-        //     }),
-        //   });
-        //   console.log(updateCartList,"updateCartlisttttttttt  remove")
-
-        //   // remove from product single card the AddtoCart
-
-        //   const removeItem  = cart.filter((product) =>
-        //   product.id !== item.id
-
-        // );
-
-        // console.log("removeitemmm===>addtoCart",removeItem)
-
-        //   setCart(removeItem)
-        //   toast.info("product removed from AddtoCart")
-
-        // ---------------------------------------------------------------
-
-  //       const updateCartList = doc(db, "cart", profile?.uid);
-
-  //       const isExist = cart.find((e) => e.id === item.id);
-
-  //       console.log("EXIST--->", isExist);
-  //       if (isExist === undefined) {
-  //         toast.info("item not found to remove");
-  //       } else if (isExist.quantity === 1) {
-  //         let obj = [...cart];
-  //         // !== this item i don't want to include it in my list array
-  //         const filterItem = obj.filter((e) => e.id !== item.id);
-  //         setCart(obj);
-
-  //         await updateDoc(updateCartList, {
-  //           cart: arrayRemove({
-  //             ...item,
-  //           }),
-  //         });
-
-  //         // await setDoc(updateCartList, {
-  //         //   cart: cart,
-  //         // });
-
-  //         toast.info("item removed successfully");
-  //       } else if (isExist.quantity > 1) {
-  //         let obj = [...cart];
-
-  //         for (let i = 0; i < obj.length; i++) {
-  //           if (obj[i].id === item.id) {
-  //             obj[i].quantity -= 1;
-  //           }
-  //         }
-
-  //         setCart(obj);
-
-  //         await setDoc(updateCartList, {
-  //           cart: cart,
-  //         });
-
-  //         toast.info("item is exist decrease quantity");
-  //       }
-  //     } else {
-  //       toast.error("Please Login Or Register");
-  //     }
-  //   } catch (error) {
-  //     console.log(error?.message);
-  //     toast.error(error);
-  //   }
-  // };
-
-
-
+ 
 
   const register = (
     email,
@@ -418,16 +368,14 @@ export const StateContextProvider = ({ children }) => {
         localStorage.setItem("isLogged", true);
         // specify path for get Auth user Data from firestore
         const userRef = doc(db, "users", user?.uid);
-        wishListSnapShot(user?.uid);
-        cartSnapShot(user?.uid);
-        console.log("wishlist==>", wishList);
-        console.log("carttt==>", cart);
+   
         const docSnap = await getDoc(userRef);
 
         // if AuthUser have data in firestore set his data in setProfile
         if (docSnap.exists()) {
           console.log("firstore Data of user--->", docSnap.data());
           setProfile(docSnap.data());
+         await NotificationsSnapShot(user?.uid)
           dispatch(GetCurrentUser(docSnap.data()));
         }
       }
@@ -469,6 +417,7 @@ export const StateContextProvider = ({ children }) => {
         addToCart,
         removeFromCartList,
         logout,
+        notifs, notifCount
       }}
     >
       {children}

@@ -21,7 +21,7 @@ export default function Index({}) {
   const { t } = useTranslation("common");
   const direction = router.locale === "ar" && "rtl";
   const lang = router.locale;
-  const { pageLoading, setPageLoading } = useAuth();
+  const { pageLoading, setPageLoading  , notifs, notifCount} = useAuth();
 
 
 
@@ -31,6 +31,7 @@ export default function Index({}) {
     <Layout dir={router.locale === "ar" ? "rtl" : "ltr"}>
       <NextSeo title="Nabhan | Nabhan Furniture | Nabhan Mobilya" />
 
+{notifCount}
    
     </Layout>
   );
