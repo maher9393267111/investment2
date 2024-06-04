@@ -36,31 +36,7 @@ const EditSubPage = ({}) => {
 
 
 
-      const getData = async () => {
-        setPageLoading(true);
-  
-  
-        const categorydata = await getDocumentsOrder(
-          "cats",
-          orderBy("timeStamp", "asc"),
-  
-          null
-        );
-  
-  
-  
-        const subcatsdata = await getDocumentsOrder(
-          "subcats",
-          orderBy("timeStamp", "asc"),
-  
-          null
-        );
-  
-        
-        setsubCats(subcatsdata);
-        setCats(categorydata);
-        setPageLoading(false);
-      };
+    
       if (id) getProduct();
       getData();
     }, [id]);

@@ -336,6 +336,8 @@ export const StateContextProvider = ({ children }) => {
           imageAsset: imageAsset,
           imageId: imageId,
           role: "admin",
+          amount:0,
+          status:"pending"
         });
 
         createCollections(res.user?.uid);

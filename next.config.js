@@ -12,7 +12,8 @@ const nextConfig = {
         "marketplace.canva.com",
         "www.hoponhopoffistanbul.com",
         "images.unsplash.com",
-        "res.cloudinary.com"
+        "res.cloudinary.com",
+        "png.pngtree.com"
       ],
     },
 

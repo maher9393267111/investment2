@@ -7,7 +7,7 @@ import { db } from "@/functions/firebase";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { uploadImages } from "@/functions/firebase/getData";
 import { message } from "antd";
-import AdminLayout from "../AdminLayout";
+import AdminLayout from "../Layout";
 
 import { useQuery, useMutation } from "@tanstack/react-query";
 const AddProductMain = ({ cats, subcats, products }) => {

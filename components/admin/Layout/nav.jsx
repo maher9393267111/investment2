@@ -3,19 +3,38 @@ import Link from "next/link";
 import {useRouter} from "next/router";
 // import {signOut} from "next-auth/react";
 import Logo from "./logo";
+ import { useAuth } from '@/functions/context';
+ import { Spinner, Avatar, Button } from "@chakra-ui/react";
+ import { toast } from "react-toastify";
 
 const Nav = ({show}) => {
+  const { logout, profile, setPageLoading, pageLoading, user } = useAuth();
     const inactiveLink = 'flex gap-1 p-1';
     const activeLink = inactiveLink + ' bg-highlight text-black rounded-sm';
     const router = useRouter();
-    const {pathname} = router;
+    const {pathname ,replace} = router;
+
+    const signOut = () => {
+      try {
+        // setPageLoading(true);
+        logout();
+        localStorage.removeItem("isLogged");
+        replace("/auth/login");
+        // setPageLoading(false);
+      } catch (error) {
+        console.log(error);
+        toast.error(error?.message);
+      }
+    };
+
+
   
     const list = [
         // { id: 1, text: "Admin Dashboard", path: "/admin" },
        
       
-        { id: 1, text: "Add Machine", path: "/admin/makine/add" },
-        { id: 2, text: "All Machines", path: "/admin/makine/all" },
+        // { id: 1, text: "Add Machine", path: "/admin/makine/add" },
+        { id: 2, text: "All investors", path: "/admin/category/all" },
         { id: 3, text: "Add Product", path: "/admin/product/add" },
         { id: 4, text: "All Products", path: "/admin/product/all" },
         // { id: 5, text: "Add SubCategory", path: "/admin/subcategory/add" },
@@ -63,7 +82,7 @@ const Nav = ({show}) => {
 
 
                 <button 
-                // onClick={() => logout()}
+                   onClick={signOut}
                  className={inactiveLink}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
                          stroke="currentColor" className="w-6 h-6">

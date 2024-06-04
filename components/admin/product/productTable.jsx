@@ -28,7 +28,7 @@ const ProductTable = ({ products }) => {
             "products",
             orderBy("timeStamp", "asc"), null 
            ),
-    //staleTime: 80000000,
+    staleTime: 80000000,
     placeholderData: keepPreviousData,
     refetchOnWindowFocus: true,
   });

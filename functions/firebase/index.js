@@ -7,13 +7,12 @@ import {getStorage} from 'firebase/storage';
 
 const firebaseConfig = {
  
-  apiKey: "AIzaSyBMzUe4OzuPI73OrZL6dfQt7ThrBN6n54g",
-  authDomain: "maher-v.firebaseapp.com",
-  databaseURL: "https://maher-v-default-rtdb.firebaseio.com",
-  projectId: "maher-v",
-  storageBucket: "maher-v.appspot.com",
-  messagingSenderId: "420487600136",
-  appId: "1:420487600136:web:a5f68189b563c0db1199bd"
+  apiKey: "AIzaSyC1SM6UMsjp5GgdNsHjEzeRvID8LdmeEY8",
+  authDomain: "next-fire3.firebaseapp.com",
+  projectId: "next-fire3",
+  storageBucket: "next-fire3.appspot.com",
+  messagingSenderId: "351689395813",
+  appId: "1:351689395813:web:c2e4b31c5c410d9ac1808c"
 
 };
 

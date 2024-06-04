@@ -14,27 +14,27 @@ const All = ({}) => {
     const [cats, setCats] = useState([]);
     // const [loacding, setLoading] = useState(true);
   
-    useEffect(() => {
-      const getArticles = async () => {
-        // setLoading(true);
-        setPageLoading(true);
+    // useEffect(() => {
+    //   const getArticles = async () => {
+    //     // setLoading(true);
+    //     setPageLoading(true);
         
-        const data = await getDocumentsOrder(
-          "cats",
-          orderBy("timeStamp", "asc")
-        );
+    //     const data = await getDocumentsOrder(
+    //       "users",
+    //    //   orderBy("timeStamp", "asc")
+    //     );
   
-        console.log(data, "fetch cats ====>>>>");
-        setCats(data);
-        setPageLoading(false);
-        //  setLoading(false);
-      };
-      getArticles();
-    }, []);
+    //     console.log(data, "fetch cats ====>>>>");
+    //     setCats(data);
+    //     setPageLoading(false);
+    //     //  setLoading(false);
+    //   };
+    //   getArticles();
+    // }, []);
   
-    if (pageLoading) {
-      return <Loader />;
-    }
+    // if (pageLoading) {
+    //   return <Loader />;
+    // }
   
   
   

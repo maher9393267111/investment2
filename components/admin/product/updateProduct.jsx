@@ -9,7 +9,7 @@ import ProductForm from "./productForm";
 import { message } from "antd";
 import { updateDoc, doc } from "firebase/firestore";
 import { db } from "@/functions/firebase";
-import AdminLayout from "../AdminLayout";
+import AdminLayout from "../Layout";
 
 
 import { uploadImages, deleteImages ,deleteImage } from "@/functions/firebase/getData";

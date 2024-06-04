@@ -2,10 +2,12 @@
 import Nav from "./nav";
 import {useState} from "react";
 import Logo from "./logo";
+
 // import SignInPage from "./singin";
 
 export default function Layout({children}) {
     const [showNav, setShowNav] = useState(false);
+  
     // const { data } = useSession();
 
     // if (!data?.user) {

@@ -8,7 +8,7 @@ import { db } from "@/functions/firebase";
 import { addDoc, collection,serverTimestamp ,updateDoc ,doc } from "firebase/firestore";
 import { uploadImages ,deleteImage } from "@/functions/firebase/getData";
 import { message } from "antd";
-import AdminLayout from "../AdminLayout";
+import AdminLayout from "../Layout";
 
 
 const  HomeSectionMain = ({data}) => {

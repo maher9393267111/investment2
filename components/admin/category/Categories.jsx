@@ -1,5 +1,5 @@
 import React from 'react';
-import AdminLayout from '../AdminLayout';
+import AdminLayout from '../Layout';
 import CategoryTable from './categoryTable';
 
 const CategoriesMain = ({cats}) => {

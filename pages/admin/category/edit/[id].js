@@ -23,7 +23,7 @@ const EditPageCategory = ({}) => {
        // setLoading(true);
        setPageLoading(true)
         //setProduct({});
-        const data = await getDocument("cats", id);
+        const data = await getDocument("users", id);
         console.log(data, "fetch categories ====>>> 🎭🎭🎭>", data);
         setCat(data);
         setPageLoading(false)
@@ -38,6 +38,8 @@ const EditPageCategory = ({}) => {
         return <Loader/>
     }
 
+
+    console.log("CARRRR" , cat)
 
 
 

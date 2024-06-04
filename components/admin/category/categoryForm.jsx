@@ -12,6 +12,7 @@ import {
   Select,
   Switch,
   InputNumber,
+  Checkbox
 } from "antd";
 const { TextArea } = Input;
 
@@ -43,23 +44,39 @@ const CategoryForm = ({
             })
           }
           initialValues={{
-            title: initialValues?.title || "",
-            titlear: initialValues?.titlear || "",
-            titletr: initialValues?.titletr || "",
-            image: initialValues?.image || "",
+            displayName: initialValues?.displayName || "",
+            amount: initialValues?.amount|| 0,
+            status: initialValues?.status|| "",
+            // titletr: initialValues?.titletr || "",
+            // image: initialValues?.image || "",
           }}
         >
-          <Form.Item name="title" label="English Category Title">
+
+          <Form.Item name="displayName" label="Name">
             <Input />
           </Form.Item>
 
-          <Form.Item name="titlear" label="Arabic Category Title">
-            <Input />
+          <Form.Item name="status" label="status">
+  <Select>
+    <Select.Option value="pending">Pending</Select.Option>
+    <Select.Option value="active">Active</Select.Option>
+    <Select.Option value="inactive">Inactive</Select.Option>
+  </Select>
+</Form.Item>
+
+
+          <Form.Item name="amount" label="Amount">
+            <InputNumber />
           </Form.Item>
 
-          <Form.Item name="titletr" label="Turkish Category Title">
-            <Input />
+
+          {/* <Form.Item className=" " name="status"   >
+            <Checkbox> Status </Checkbox>
+            
           </Form.Item>
+       */}
+
+
 
 
 
@@ -70,7 +87,7 @@ const CategoryForm = ({
           {/* -----images upload----- */}
 
 
-          <div>
+          {/* <div>
             <Upload
               accept="image/*"
               maxCount={1}
@@ -86,11 +103,11 @@ const CategoryForm = ({
               Upload Image
             </Upload>
           </div>
-
+ */}
 
           {/* -----show category image {update category} ---- */}
 
-
+{/* 
           {image && (
             <div className="  w-24 md:w-24 relative">
               <img className=" w-24 h-24  rounded-lg" src={image} alt="" />
@@ -104,7 +121,7 @@ const CategoryForm = ({
               </p>
             </div>
           )}
-
+ */}
 
           <div className=" ">
             <Button
